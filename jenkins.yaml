@@ -1,0 +1,27 @@
+jenkins:
+  systemMessage: "Jenkins master with JCasC plugin."
+  clouds:
+  - ecscloud: # cluster, credentialsId, jenkinsUrl, name, regionName, retentionTimeout, slaveTimeoutInSeconds, templates, tunnel
+      name: "my-ecs"
+      credentialsId: "AWS"
+      regionName: "us-west-2"
+      cluster: "arn:aws:ecs:us-west-2:555893090191:cluster/my-cluster"
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - aws:
+              scope: GLOBAL
+              id: "AWS"
+              accessKey: ${AWS_ACCESS_KEY_ID} #Load from Environment Variable
+              secretKey: ${AWS_SECRET_ACCESS_KEY} #Load from Environment Variable
+              description: "AWS Credentials"
+
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+
+

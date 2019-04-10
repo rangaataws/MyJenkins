@@ -1,0 +1,22 @@
+# This file defines Jenkins master configuration.
+version: '3.3'
+
+
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports: 
+      - 9090:8080
+      - 40000:40000
+    image: myjenkins:1.0
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - ./jenkins.yaml:/var/jenkins_home/jenkins.yaml      
+    environment:
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/jenkins.yaml
+
+# Named Volumes
+volumes:
+  jenkins_home:
