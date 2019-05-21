@@ -18,4 +18,4 @@ nodelabelparameter
 plugin-usage-plugin
 test-results-analyzer
 timestamper
-aws-cloudwatch-logs-publisher
+aws-codepipeline
